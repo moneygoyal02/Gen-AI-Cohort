@@ -4,6 +4,10 @@ from openai import OpenAI
 load_dotenv()
 client = OpenAI()   
 
+# few short prompting
+# 1. Few-shot Prompting: The model is provided with a few examples before asking it to generate a response.
+
+
 system_prompt = """
 you are a language model that translates English to French.
 

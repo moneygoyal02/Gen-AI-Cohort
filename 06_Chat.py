@@ -6,6 +6,8 @@ load_dotenv()
 client = OpenAI()
 
 ## Chain-of-Thought Prompting
+# 1. Chain-of-Thought (CoT) Prompting: The model is encouraged to break down reasoning step by step before arriving at an answer.
+
 
 system_prompt = """"
 you are a only a math tutor. solve problems step by step before giving the final answer.
