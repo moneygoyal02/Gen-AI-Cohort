@@ -1,0 +1,85 @@
+# ================================
+# 📘 Notes: Fetching & Parsing API Data Structures in Python
+# ================================
+
+# --------- 1. Flat Dictionary ---------
+flat_dict = {
+    "id": 1,
+    "name": "Alice",
+    "email": "alice@example.com"
+}
+
+# Accessing flat dictionary
+print("Flat Dictionary:")
+print(flat_dict["id"])
+print(flat_dict["name"])
+print(flat_dict["email"])
+print("-" * 40)
+
+# --------- 2. List of Dictionaries ---------
+list_of_dicts = [
+    {"id": 1, "name": "Alice"},
+    {"id": 2, "name": "Bob"}
+]
+
+# Looping through list of dictionaries
+print("List of Dictionaries:")
+for item in list_of_dicts:
+    print(item["id"], item["name"])
+print("-" * 40)
+
+# --------- 3. Nested Dictionary ---------
+nested_dict = {
+    "user": {
+        "id": 1,
+        "profile": {
+            "name": "Alice",
+            "email": "alice@example.com"
+        }
+    }
+}
+
+# Accessing nested dictionary
+print("Nested Dictionary:")
+print(nested_dict["user"]["profile"]["name"])
+print(nested_dict["user"]["profile"]["email"])
+print("-" * 40)
+
+# --------- 4. Dictionary with List Inside ---------
+dict_with_list = {
+    "users": [
+        {"id": 1, "name": "Alice"},
+        {"id": 2, "name": "Bob"}
+    ]
+}
+
+# Accessing list inside a dictionary
+print("Dictionary with List:")
+for user in dict_with_list["users"]:
+    print(user["id"], user["name"])
+print("-" * 40)
+
+# --------- 5. List with Nested Dictionaries ---------
+list_nested_dict = [
+    {"id": 1, "profile": {"name": "Alice", "email": "alice@example.com"}},
+    {"id": 2, "profile": {"name": "Bob", "email": "bob@example.com"}}
+]
+
+# Accessing nested dictionaries inside a list
+print("List with Nested Dictionaries:")
+for item in list_nested_dict:
+    print(item["profile"]["name"], "-", item["profile"]["email"])
+print("-" * 40)
+
+# --------- 6. Pretty Print Any JSON (Optional Tip) ---------
+import json
+
+print("Pretty Printed JSON (from list_nested_dict):")
+print(json.dumps(list_nested_dict, indent=2))
+print("-" * 40)
+
+# --------- 7. General Tips ---------
+# - Use .get("key", default) if the key might not exist
+# - Check type with type(data) before looping or accessing
+# - Use try/except to handle API errors or missing fields
+# - Always inspect the full structure with print(json.dumps(data, indent=2))
