@@ -83,3 +83,6 @@ print("-" * 40)
 # - Check type with type(data) before looping or accessing
 # - Use try/except to handle API errors or missing fields
 # - Always inspect the full structure with print(json.dumps(data, indent=2))
+
+# json.dumps means it converts a Python object into a JSON string
+# json.loads means it converts a JSON string into a Python object
