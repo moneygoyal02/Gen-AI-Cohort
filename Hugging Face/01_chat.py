@@ -1,7 +1,9 @@
 import os
+from dotenv import load_dotenv
 
 
-os.environ["HF_TOKEN"] = "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"  # set huggingface token as an environment variable
+load_dotenv()  # loads .env variables into os.environ
+
 
 model_name = "google/gemma-3-1b-it" # specify the model name
  
