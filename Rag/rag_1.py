@@ -3,6 +3,7 @@ from pathlib import Path
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from dotenv import load_dotenv
 load_dotenv()
+import json
 
 file_path = Path(__file__).parent.parent / "pdf_node.pdf"
 
@@ -66,17 +67,55 @@ retriver = QdrantVectorStore.from_existing_collection(
     embedding=embedder,
 )
 
+query = input("> ")
 relevant_chunks = retriver.similarity_search(
-    query="What is the ES6?",
+    query=query,
 )
 
 # print("relevant chunks retrieved from the vector store:", search_results)
 
 
-SYSTEM_PROMPT = """
+SYSTEM_PROMPT = f"""
 You are an AI assistant who responds to user queries based on the provided context.
 
 Context:
 {relevant_chunks}
+
+Instructions:
+1. Follow these steps in order: "analyse", "think", "output", "validate", "result".
+2. Think at least 5-6 steps before giving final result.
+3. Return responses strictly in JSON format: {{ "step": "...", "content": "..." }}
+
+Output Format:
+{{ "step": "string", "content": "string" }}
+
+Example:
+Input: What is 2 + 2.
+Output: {{ "step": "analyse", "content": "Alright! The user is asking a basic arithmetic question." }}
+Output: {{ "step": "think", "content": "To perform addition I must go from left to right and add operands." }}
+...
 """
+
+from openai import OpenAI
+client = OpenAI()
+
+messages = [
+    {"role": "system", "content": SYSTEM_PROMPT},
+    {"role": "user", "content": query},
+]
+
+while True:
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        response_format={"type": "json_object"},
+        messages=messages
+    )
+
+    parsed_response = json.loads(response.choices[0].message.content)
+    messages.append({"role": "assistant", "content": json.dumps(parsed_response)})
+
+    print(f"🧠 Step ({parsed_response['step']}): {parsed_response['content']}")
+
+    if parsed_response.get("step") == "result":
+        break
 
