@@ -8,7 +8,8 @@ QUADRANT_HOST = "localhost"
 
 NEO4J_URL="bolt://localhost:7687"
 NEO4J_USERNAME="neo4j"
-NEO4J_PASSWORD="mfdqFWejWtKwQehbhwoWJ9zHzSFxGjjVN2Ky_fUAWRA"
+import os
+NEO4J_PASSWORD = os.environ.get("NEO4J_PASSWORD")
 
 config = {
     "version": "v1.1",
@@ -26,7 +27,7 @@ config = {
     },
     "graph_store": {
         "provider": "neo4j",
-        "config": {"url": NEO4J_URL, "username": NEO4J_USERNAME, "password": NEO4J_PASSWORD},
+        "config": {"url": NEO4J_URL, "username": NEO4J_USERNAME,"password": NEO4J_PASSWORD},
     },
 }
 
