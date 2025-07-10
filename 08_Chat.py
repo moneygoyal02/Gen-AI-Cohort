@@ -20,7 +20,7 @@ The steps are you get a user input, you analyse, you think, you again think for 
 Follow the steps in sequence that is "analyse", "think", "output", "validate" and finally "result".
 
 Rules:
-1. Follow the strict JSON output as per Output schema.
+1. Follow tvehe strict JSON output as per Output schema.
 2. Always perform one step at a time and wait for next input
 3. Carefully analyse the user query
 
