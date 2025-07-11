@@ -1,0 +1,40 @@
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+
+1. First step, we have to access the mic  of user
+   
+   https://pypi.org/project/SpeechRecognition/
+   https://github.com/Uberi/speech_recognition/blob/master/examples/microphone_recognition.py
+   
+   pip install SpeechRecognition
+   pip install PyAudio
+
+  import speech_recognition as sr
+
+   def main():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+         r.adjust_for_ambient_noise(source, duration=1)
+         print("Please speak something:")
+         audio = r.listen(source)
+         print("Processing audio....")
+         sst = r.recognize_google(audio)
+         print("You said: " + sst)
+           
+           
+          
+
+    main()
+
+2.  after getting text now we have to make langraph to process this text
+
+    we will take one node  (chat node)in which user voice to text message will be received
+    this chatnode has the ability to call any avialble tool 
+
+    -- made docker container for database
+    -- install langraph python (pip install -U langgraph langsmith)
+    -- pip install langchain
+    -- pip install -qU langchain-mongodb pymongo
+
+
+
