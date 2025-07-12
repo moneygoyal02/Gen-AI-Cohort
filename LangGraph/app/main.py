@@ -2,10 +2,12 @@ from .graph import create_chat_graph
 from dotenv import load_dotenv
 
 from langgraph.checkpoint.mongodb import MongoDBSaver
+import os
 
 load_dotenv()
-MONGODB_URI = "mongodb+srv://moneygoyal:4BYkeZ4#6r-ie8Q@cluster0.qse3ode.mongodb.net/"
-config = {"configurable": {"thread_id": "1"}}
+MONGODB_URI = os.getenv("MONGODB_URI")
+
+config = {"configurable": {"thread_id": "3"}}
  
 def init():
     with MongoDBSaver.from_conn_string(MONGODB_URI) as checkpointer:
