@@ -1,0 +1,14 @@
+services:
+  mongodb:
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: moneygoyal
+      MONGO_INITDB_ROOT_PASSWORD: 4BYkeZ4#6r-ie8Q
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
