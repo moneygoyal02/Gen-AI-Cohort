@@ -2,6 +2,7 @@
     "cSpell.words": [
         "checkpointer",
         "huggingface",
-        "INITDB"
+        "INITDB",
+        "modelcontextprotocol"
     ]
 }
